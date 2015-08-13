@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <process processType="Private" isExecutable="true" id="org.integrallis.drools.loans" name="loans" tns:packageName="org.integrallis.drools.loans.domain" >
+
+    <!-- nodes -->
+    <startEvent id="_1" name="StartProcess"  isInterrupting="true">
+    </startEvent>
+    <businessRuleTask id="_jbpm-unique-10" name="Pre-Qualification" g:ruleFlowGroup="prequalification" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </businessRuleTask>
+    <businessRuleTask id="_jbpm-unique-11" name="Qualification" g:ruleFlowGroup="qualification" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </businessRuleTask>
+    <businessRuleTask id="_jbpm-unique-12" name="Recommendation" g:ruleFlowGroup="recommendation" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </businessRuleTask>
+    <endEvent id="_jbpm-unique-13" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <endEvent id="_jbpm-unique-14" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <inclusiveGateway id="_jbpm-unique-15" name="P/F" gatewayDirection="Diverging" >
+    </inclusiveGateway>
+
+    <!-- connections -->
+    <sequenceFlow id="_1-_jbpm-unique-10" sourceRef="_1" targetRef="_jbpm-unique-10" />
+    <sequenceFlow id="_jbpm-unique-15-_jbpm-unique-11" sourceRef="_jbpm-unique-15" targetRef="_jbpm-unique-11" name="passed" tns:priority="1" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.jboss.org/drools/rule" >LoanApplication(prequalified)</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_jbpm-unique-15-_jbpm-unique-12" sourceRef="_jbpm-unique-15" targetRef="_jbpm-unique-12" name="failed" tns:priority="1" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.jboss.org/drools/rule" >LoanApplication(!prequalified)</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_jbpm-unique-11-_jbpm-unique-13" sourceRef="_jbpm-unique-11" targetRef="_jbpm-unique-13" />
+    <sequenceFlow id="_jbpm-unique-12-_jbpm-unique-14" sourceRef="_jbpm-unique-12" targetRef="_jbpm-unique-14" />
+    <sequenceFlow id="_jbpm-unique-10-_jbpm-unique-15" sourceRef="_jbpm-unique-10" targetRef="_jbpm-unique-15" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="org.integrallis.drools.loans" >
+      <bpmndi:BPMNShape bpmnElement="_1" >
+        <dc:Bounds x="325" y="35" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-10" >
+        <dc:Bounds x="284" y="110" width="127" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-11" >
+        <dc:Bounds x="154" y="250" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-12" >
+        <dc:Bounds x="446" y="263" width="119" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-13" >
+        <dc:Bounds x="182" y="389" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-14" >
+        <dc:Bounds x="505" y="405" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-15" >
+        <dc:Bounds x="324" y="184" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_1-_jbpm-unique-10" >
+        <di:waypoint x="349" y="59" />
+        <di:waypoint x="347" y="134" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-15-_jbpm-unique-11" >
+        <di:waypoint x="348" y="208" />
+        <di:waypoint x="194" y="274" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-15-_jbpm-unique-12" >
+        <di:waypoint x="348" y="208" />
+        <di:waypoint x="505" y="287" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-11-_jbpm-unique-13" >
+        <di:waypoint x="194" y="274" />
+        <di:waypoint x="206" y="413" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-12-_jbpm-unique-14" >
+        <di:waypoint x="505" y="287" />
+        <di:waypoint x="529" y="429" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-10-_jbpm-unique-15" >
+        <di:waypoint x="347" y="134" />
+        <di:waypoint x="348" y="208" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

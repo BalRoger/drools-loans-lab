@@ -1,11 +1,10 @@
 package org.integrallis.drools.loans;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.integrallis.drools.junit.BaseDroolsTestCase;
 import org.integrallis.drools.loans.domain.Applicant;
 import org.integrallis.drools.loans.domain.LoanApplication;
-import org.integrallis.drools.loans.domain.MessageCatalog;
 import org.integrallis.drools.loans.domain.Mortgage;
 import org.integrallis.drools.loans.util.LoansUtil;
 import org.junit.Before;

@@ -3,7 +3,7 @@ package org.integrallis.drools.loans.domain
 import java.util.Date;
 import java.util.Calendar;
 
-expander loans.dsl
+expander dsl/loans.dsl 
 
 rule "ACME-Fico"
 	when
@@ -14,7 +14,7 @@ rule "ACME-Fico"
 		reject the application because "a FICO score of at least 680 is required"
 end
 
-rule "ACME-Principal"
+rule "ACME-Principal" 
 	when
 		the lender is "ACME Mortgage"
 		and there is an application

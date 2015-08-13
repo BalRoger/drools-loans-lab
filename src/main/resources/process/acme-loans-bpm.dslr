@@ -3,7 +3,7 @@ package org.integrallis.drools.loans.domain
 import java.util.Date;
 import java.util.Calendar;
 
-expander loans.dsl
+expander rules/dsl/loans.dsl 
 
 rule "ACME-Fico"
     ruleflow-group "qualification" 
@@ -13,7 +13,7 @@ rule "ACME-Fico"
 		  - with a FICO score below 680 
 	then
 		reject the application because "a FICO score of at least 680 is required"
-end
+end 
 
 rule "ACME-Principal"
     ruleflow-group "qualification"
@@ -74,21 +74,21 @@ rule "ACME-FourUnitsPrincipal"
 		the lender is "ACME Mortgage"
 		and there is an application	
 		- with a Number of Units equal to 4
-		- with a Principal that is equal or greater than 390400		
+		- with a Principal that is equal or greater than 390400
 	then
 		reject the application because "the principal for a 4 unit property must be no more than $390,400"
 end
 
 rule "ACME-PrincipalMultipleOf50"
     ruleflow-group "qualification"
-	when
+	when    
 		the lender is "ACME Mortgage"
 		and there is an application	
 		- with a Principal that is not a multiple of 50
 	then
 		reject the application because "a principal that is a multiple of $50 is required"
 end
-
+  
 rule "ACME-LoanPurpose"
     ruleflow-group "qualification"
 	when
@@ -100,20 +100,20 @@ rule "ACME-LoanPurpose"
 end
 
 rule "ACME-PercentOfProperyPrimaryResidence"
-    ruleflow-group "qualification"
+    ruleflow-group "qualification" 
 	when
-	    the lender is "ACME Mortgage"
+	    the lender is "ACME Mortgage" 
 		and there is an application
 		- with a Property Type of "Primary Residence"
 		- with a Principal that is equal or more than 70% of the Property Value
-	then
+	then 
 		reject the application because "lender will not loan more than 70% of the value a primary residence"
 end
 
 rule "ACME-PercentOfProperyInvestmentProperty"
     ruleflow-group "qualification"
 	when
-	    the lender is "ACME Mortgage"
+	    the lender is "ACME Mortgage"  
 		and there is an application
 		- with a Property Type of "Investment Property"
 		- with a Principal that is equal or more than 95% of the Property Value

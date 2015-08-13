@@ -1,6 +1,6 @@
 package org.integrallis.drools.loans;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Calendar;
 
@@ -130,6 +130,7 @@ public class AcmeLoansDSLTest extends BaseDroolsTestCase {
 
 		knowledgeSession.fireAllRules();
 
+		assertEquals(1, application.getMessages().size());
 		assertTrue(
 				"Application should have been declined because the principal for a 2 unit property must be no more than $259,850",
 				application
@@ -147,6 +148,7 @@ public class AcmeLoansDSLTest extends BaseDroolsTestCase {
 
 		knowledgeSession.fireAllRules();
 
+		assertEquals(1, application.getMessages().size());
 		assertTrue(
 				"Application should have been declined because " + MessageCatalog.MSG_ACME_3_UNIT_PRINCIPAL,
 				application
@@ -163,6 +165,7 @@ public class AcmeLoansDSLTest extends BaseDroolsTestCase {
 
 		knowledgeSession.fireAllRules();
 
+		assertEquals(1, application.getMessages().size());
 		assertTrue(
 				"Application should have been declined because " + MessageCatalog.MSG_ACME_4_UNIT_PRINCIPAL,
 				application
@@ -193,6 +196,7 @@ public class AcmeLoansDSLTest extends BaseDroolsTestCase {
 
 		knowledgeSession.fireAllRules();
 
+		assertEquals(1, application.getMessages().size());
 		assertTrue(
 				"Application should have been declined because " + MessageCatalog.MSG_ACME_LOAN_PURPOSE,
 				application
@@ -209,6 +213,7 @@ public class AcmeLoansDSLTest extends BaseDroolsTestCase {
 
 		knowledgeSession.fireAllRules();
 
+		assertEquals(1, application.getMessages().size());
 		assertTrue(
 				"Application should have been declined because lender will not loan more than 70% of the value a primary residence",
 				application
@@ -226,6 +231,7 @@ public class AcmeLoansDSLTest extends BaseDroolsTestCase {
 
 		knowledgeSession.fireAllRules();
 
+		assertEquals(1, application.getMessages().size());
 		assertTrue(
 				"Application should have been declined because lender will not loan more than 95% of the value a investment property",
 				application
@@ -244,6 +250,7 @@ public class AcmeLoansDSLTest extends BaseDroolsTestCase {
 
 		knowledgeSession.fireAllRules();
 
+		assertEquals(1, application.getMessages().size());
 		assertTrue(
 				"Application should have been declined because the primary applicant must be older than 18 years of age",
 				application
@@ -260,6 +267,7 @@ public class AcmeLoansDSLTest extends BaseDroolsTestCase {
 
 		knowledgeSession.fireAllRules();
 
+		assertEquals(1, application.getMessages().size());
 		assertTrue(
 				"Application should have been declined because the primary applicant cannot be an ACME-Loans employee",
 				application
@@ -276,6 +284,7 @@ public class AcmeLoansDSLTest extends BaseDroolsTestCase {
 
 		knowledgeSession.fireAllRules();
 
+		assertEquals(1, application.getMessages().size());
 		assertTrue(
 				"Application should have been declined because the primary applicant must be a US resident",
 				application
